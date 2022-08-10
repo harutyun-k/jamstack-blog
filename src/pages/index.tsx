@@ -1,13 +1,25 @@
 import * as React from "react"
 import type { HeadFC } from "gatsby"
+import { graphql } from "gatsby"
 
-const IndexPage = () => {
+
+const IndexPage = ({data}) => {
   return (
     <h1>
-      Hello, World!
+      {data.allArticles}
     </h1>
   )
 }
+
+export const query = graphql`
+  query {
+    allArticles {
+      id
+      title
+      subtitle
+    }
+  }
+`
 
 export default IndexPage
 
