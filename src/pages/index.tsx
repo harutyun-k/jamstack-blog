@@ -2,7 +2,6 @@ import * as React from "react"
 import type { HeadFC } from "gatsby"
 import { graphql } from "gatsby"
 
-
 const IndexPage = ({data}) => {
   return (
     <h1>
@@ -20,7 +19,5 @@ export const query = graphql`
     }
   }
 `
-
 export default IndexPage
-
 export const Head: HeadFC = () => <title>Home Page</title>
