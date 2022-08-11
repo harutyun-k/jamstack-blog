@@ -15,13 +15,11 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   data.allDatoCmsArticle.nodes.forEach(node => {
-    const { slug } = node.slug;
-
     createPage({
-      path: `/${slug}`,
+      path: `/${node.slug}`,
       component: blogPostTemplate,
       context: {
-        slug
+        slug: node.slug
       }
     });
   });
