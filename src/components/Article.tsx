@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import Title from "../components/Title"
 
 const Article = ({data}) => {
@@ -11,12 +12,12 @@ const Article = ({data}) => {
 
   return (
     <article className="mb-5">
-      <a href={slug}>
+      <Link to={`/${slug}`}>
         <img
           src={coverURL}
           width="300"
         />
-      </a>
+      </Link>
       <span>
         {category}
       </span>
