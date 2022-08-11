@@ -1,19 +1,33 @@
 import * as React from "react"
 import type { HeadFC } from "gatsby"
 import { graphql } from "gatsby"
-import Article from "../components/Article";
+import Article from "../components/Article"
+import FeatureArticle from "../components/FeatureArticle"
 
 const IndexPage = ({data}) => {
-  const articles = data.allDatoCmsArticle.nodes;
+  const latestNews = data.allDatoCmsArticle.nodes
+  const featuredStories = data.allDatoCmsFeatured.edges
 
   return (
     <div className="container">
-      <section className="m-5">
-        <h2 className="mb-5">Latest news</h2>
-        {articles.map(art => {
+      <section className="m-5 mb-20">
+        <h2 className="mb-5 font-black text-2xl uppercase">Latest news</h2>
+        {latestNews.map(news => {
           return <Article
-            key={art.id}
-            data={art} 
+            key={news.id}
+            data={news} 
+          />
+        })}
+      </section>
+
+      <section className="m-5">
+        <h2 className="mb-5 text-2xl font-black">
+          Featured Stories
+        </h2>
+        {featuredStories.map(story => {
+          return <FeatureArticle
+            key="story.id"
+            data={story}
           />
         })}
       </section>
@@ -37,6 +51,24 @@ export const query = graphql`
         }
         tag {
           category
+        }
+      }
+    }
+    
+    allDatoCmsFeatured(limit: 3) {
+      edges {
+        node {
+          posts {
+            id
+            slug
+            cover {
+              url
+            }
+            title
+            meta {
+              createdAt(formatString: "MMMM DD, YYYY")
+            }
+          }
         }
       }
     }
