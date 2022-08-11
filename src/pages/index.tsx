@@ -8,7 +8,13 @@ const IndexPage = ({data}) => {
   const latestNews = data.allDatoCmsArticle.nodes
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
 
-  console.log(featuredStories)
+  latestNews.forEach((news, index) => {
+    featuredStories.forEach(story => {
+      if (news.id === story.id) {
+        latestNews.splice(index, 1)
+      }
+    })
+  })
 
   return (
     <div className="container">
