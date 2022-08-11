@@ -23,7 +23,7 @@ const IndexPage = ({data}) => {
 
 export const query = graphql`
   query MyQuery {
-    allDatoCmsArticle {
+    allDatoCmsArticle(limit: 10) {
       nodes {
         meta {
           createdAt(formatString: "MMMM DD, YYYY")
