@@ -3,19 +3,21 @@ import type { HeadFC } from "gatsby"
 import { graphql } from "gatsby"
 
 const IndexPage = ({data}) => {
+  console.log(data);
+
   return (
     <h1>
-      {data.allArticles}
+      {JSON.stringify(data.allDatoCmsArticle)}
     </h1>
   )
 }
 
 export const query = graphql`
-  query {
-    allArticles {
-      id
-      title
-      subtitle
+  query MyQuery {
+    allDatoCmsArticle {
+      nodes {
+        title
+      }
     }
   }
 `

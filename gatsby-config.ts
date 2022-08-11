@@ -1,11 +1,13 @@
 module.exports = {
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-datocms`,
       options: {
         // You can find your read-only API token under the Settings > API tokens
         // section of your administrative area. Make sure to grant both CDA and CMA permissions.
-        apiToken: `17f928724653873c60911144d79c47`,
+        apiToken: `756a68def5962b45aa65f6870b4eef`,
 
         // The project environment to read from. Defaults to the primary environment:
         environment: `main`,
