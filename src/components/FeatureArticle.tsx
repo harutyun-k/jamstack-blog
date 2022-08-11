@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import Title from "../components/Title"
 
 const FeatureArticle = ({data}) => {
-  const post = data.node.posts[0];
+  const post = data;
   const postID = post.id
   const postSlug = `/${post.slug}`
   const postCover = post.cover.url

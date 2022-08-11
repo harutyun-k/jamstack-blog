@@ -6,7 +6,9 @@ import FeatureArticle from "../components/FeatureArticle"
 
 const IndexPage = ({data}) => {
   const latestNews = data.allDatoCmsArticle.nodes
-  const featuredStories = data.allDatoCmsFeatured.edges
+  const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
+
+  console.log(featuredStories)
 
   return (
     <div className="container">
@@ -36,7 +38,7 @@ const IndexPage = ({data}) => {
 }
 
 export const query = graphql`
-  query MyQuery {
+query MyQuery {
     allDatoCmsArticle(limit: 10) {
       nodes {
         meta {
@@ -56,9 +58,8 @@ export const query = graphql`
     }
     
     allDatoCmsFeatured(limit: 3) {
-      edges {
-        node {
-          posts {
+      nodes {
+         posts {
             id
             slug
             cover {
@@ -68,11 +69,10 @@ export const query = graphql`
             meta {
               createdAt(formatString: "MMMM DD, YYYY")
             }
-          }
         }
       }
-    }
   }
+}
 `
 export default IndexPage
 export const Head: HeadFC = () => <title>Home Page</title>
