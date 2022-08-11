@@ -25,6 +25,9 @@ export const query = graphql`
   query MyQuery {
     allDatoCmsArticle {
       nodes {
+        meta {
+          createdAt(formatString: "MMMM DD, YYYY")
+        }
         id
         slug
         title
