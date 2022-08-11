@@ -5,7 +5,6 @@ import Article from "../components/Article";
 
 const IndexPage = ({data}) => {
   const articles = data.allDatoCmsArticle.nodes;
-  console.log(data)
 
   return (
     <div className="container">
