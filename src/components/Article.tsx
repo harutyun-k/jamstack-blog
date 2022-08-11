@@ -2,8 +2,6 @@ import * as React from "react"
 import Title from "../components/Title"
 
 const Article = ({data}) => {
-  console.log(data)
-
   const dataID = data.id
   const slug = data.slug
   const coverURL = data.cover.url
