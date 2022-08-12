@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 const ArticlePost = ({data}) => {
   const result = data.datoCmsArticle
@@ -11,6 +11,9 @@ const ArticlePost = ({data}) => {
 
   return (
     <div>
+      <Link to="/">
+        Home
+      </Link>
       <div>
         {tag}
       </div>

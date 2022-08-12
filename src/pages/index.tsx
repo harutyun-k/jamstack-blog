@@ -25,7 +25,7 @@ const IndexPage = ({data}) => {
     <div className="container">
       <div className="m-5 mb-30">
         {categories.map(category => {
-          return <Link className="mr-5" to={`/${category.category.toLowerCase()}`}>{category.category}</Link>
+          return <Link className="mr-5" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
         })}
       </div>
 
