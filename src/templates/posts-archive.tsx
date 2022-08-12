@@ -1,0 +1,42 @@
+import * as React from "react"
+import { graphql } from "gatsby"
+import Article from "../components/Article"
+
+const PostArchive = ({data}) => {
+  const allArticles = data.allDatoCmsArticle.nodes
+
+  return (
+    <section className="m-5 mb-20">
+      <h2 className="mb-5 font-black text-2xl uppercase">Archive</h2>
+      {allArticles.map(article => {
+        return <Article
+          key={article.id}
+          data={article} 
+        />
+      })}
+    </section>
+  )
+};
+
+export default PostArchive
+export const query = graphql`
+query ArchiveQuery {
+  allDatoCmsArticle{
+    nodes {
+      meta {
+        createdAt(formatString: "MMMM DD, YYYY")
+      }
+      id
+      slug
+      title
+      subtitle
+      cover {
+        url
+      }
+      tag {
+        category
+      }
+    }
+  }
+}
+`

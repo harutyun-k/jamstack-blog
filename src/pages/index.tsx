@@ -37,6 +37,12 @@ const IndexPage = ({data}) => {
             data={news} 
           />
         })}
+        <Link
+          className="font-black text-2xl underline uppercase"
+          to="/archive"
+        >
+          Archive
+        </Link>
       </section>
 
       <section className="m-5">

@@ -22,6 +22,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
+  createPage({
+    path: `/archive`,
+    component: path.resolve(`src/templates/posts-archive.tsx`),
+    content: {
+      slug: `/archive`
+    }
+  })
+
   data.allDatoCmsArticleCategory.nodes.forEach(node => {
     const categorySlug = node.category
 
