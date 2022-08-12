@@ -5,7 +5,10 @@ import Article from "../components/Article"
 import FeatureArticle from "../components/FeatureArticle"
 
 const IndexPage = ({data}) => {
-  const latestNews = data.allDatoCmsArticle.nodes
+  const news = data.allDatoCmsArticle.nodes
+  const latestNews = news.reverse()
+  latestNews.length = 10
+  
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
 
   latestNews.forEach((news, index) => {
@@ -45,7 +48,7 @@ const IndexPage = ({data}) => {
 
 export const query = graphql`
 query MyQuery {
-    allDatoCmsArticle(limit: 10) {
+    allDatoCmsArticle {
       nodes {
         meta {
           createdAt(formatString: "MMMM DD, YYYY")
