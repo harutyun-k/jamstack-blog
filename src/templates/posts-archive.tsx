@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 
 const PostArchive = ({data}) => {
@@ -7,6 +7,9 @@ const PostArchive = ({data}) => {
 
   return (
     <section className="m-5 mb-20">
+      <Link to="/">
+        Home
+      </Link>
       <h2 className="mb-5 font-black text-2xl uppercase">Archive</h2>
       {allArticles.map(article => {
         return <Article
