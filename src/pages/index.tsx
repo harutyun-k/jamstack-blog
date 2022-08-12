@@ -9,7 +9,7 @@ const IndexPage = ({data}) => {
 
   const news = data.allDatoCmsArticle.nodes
   const latestNews = news.reverse()
-  latestNews.length = 10
+  latestNews.length = 3
   
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
 
