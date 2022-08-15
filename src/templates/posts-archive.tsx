@@ -1,8 +1,9 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
+import Pagination from "../components/Pagination"
 
-const PostArchive = ({data}) => {
+const PostArchive = ({pageContext, data}) => {
   const allArticles = data.allDatoCmsArticle.nodes
 
   return (
@@ -17,19 +18,21 @@ const PostArchive = ({data}) => {
           data={article} 
         />
       })}
+      <Pagination data={pageContext} />
     </section>
   )
 };
 
 export default PostArchive
 export const query = graphql`
-  {
+  query ($skip: Int, $limit: Int) {
     allDatoCmsArticle (
       sort: {
         order: DESC,
         fields: meta___createdAt
       },
-      limit: 10
+      limit: $limit,
+      skip: $skip
     ) {
       nodes {
         meta {

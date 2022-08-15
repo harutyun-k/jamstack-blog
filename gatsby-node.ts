@@ -31,6 +31,25 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 
+  const posts = data.allDatoCmsArticle.nodes
+  const postsPerPage = 10;
+
+  const numPages = Math.ceil(posts.length / postsPerPage);
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const firstPage = i === 0;
+    const currentPage = i + 1;
+    createPage({
+      path: firstPage ? "/archive" : `/archive/page/${currentPage}`,
+      component: path.resolve("./src/templates/posts-archive.tsx"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage
+      },
+    });
+  });
+
   data.allDatoCmsArticleCategory.nodes.forEach(node => {
     const categorySlug = node.category
 
