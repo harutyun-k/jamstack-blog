@@ -23,23 +23,29 @@ const PostArchive = ({data}) => {
 
 export default PostArchive
 export const query = graphql`
-query ArchiveQuery {
-  allDatoCmsArticle{
-    nodes {
-      meta {
-        createdAt(formatString: "MMMM DD, YYYY")
-      }
-      id
-      slug
-      title
-      subtitle
-      cover {
-        url
-      }
-      tag {
-        category
+  {
+    allDatoCmsArticle (
+      sort: {
+        order: DESC,
+        fields: meta___createdAt
+      },
+      limit: 10
+    ) {
+      nodes {
+        meta {
+          createdAt(formatString: "MMMM DD, YYYY")
+        }
+        id
+        slug
+        title
+        subtitle
+        cover {
+          url
+        }
+        tag {
+          category
+        }
       }
     }
   }
-}
 `

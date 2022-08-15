@@ -3,11 +3,12 @@ const path = require('path')
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const archivePostTemplate = path.resolve(`src/templates/posts-archive.tsx`)
   const categoryPostTemplate = path.resolve(`src/templates/category-posts.tsx`)
   const blogPostTemplate = path.resolve(`src/templates/article-post.tsx`)
 
   const { data } = await graphql(`
-    query MyQuery {
+    {
       allDatoCmsArticleCategory {
         nodes {
           category
@@ -24,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createPage({
     path: `/archive`,
-    component: path.resolve(`src/templates/posts-archive.tsx`),
+    component: archivePostTemplate,
     content: {
       slug: `/archive`
     }

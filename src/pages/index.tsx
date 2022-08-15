@@ -6,26 +6,14 @@ import FeatureArticle from "../components/FeatureArticle"
 
 const IndexPage = ({data}) => {
   const categories = data.allDatoCmsArticleCategory.nodes
-
-  const news = data.allDatoCmsArticle.nodes
-  const latestNews = news.reverse()
-  latestNews.length = 3
-  
+  const latestNews = data.allDatoCmsArticle.nodes
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
-
-  latestNews.forEach((news, index) => {
-    featuredStories.forEach(story => {
-      if (news.id === story.id) {
-        latestNews.splice(index, 1)
-      }
-    })
-  })
 
   return (
     <div className="container">
-      <div className="m-5 mb-30">
+      <div className="m-5 mb-10">
         {categories.map(category => {
-          return <Link className="mr-5" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
+          return <Link className="mr-5 uppercase" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
         })}
       </div>
 
@@ -61,47 +49,65 @@ const IndexPage = ({data}) => {
 }
 
 export const query = graphql`
-query MyQuery {
-  allDatoCmsArticleCategory {
-    nodes {
-      id
-      category
-    }
-  }
-  
-  allDatoCmsArticle{
-    nodes {
-      meta {
-        createdAt(formatString: "MMMM DD, YYYY")
+  {
+    allDatoCmsArticleCategory(
+      sort: {
+        order: DESC,
+        fields: meta___createdAt
       }
-      id
-      slug
-      title
-      subtitle
-      cover {
-        url
-      }
-      tag {
+    ) {
+      nodes {
+        id
         category
       }
     }
-  }
-  allDatoCmsFeatured(limit: 3) {
-    nodes {
-      posts {
+    
+    allDatoCmsArticle(
+      sort: {
+        order: DESC,
+        fields: meta___createdAt
+      }, 
+      limit: 3
+    ) {
+      nodes {
+        meta {
+          createdAt(formatString: "MMMM DD, YYYY")
+        }
         id
         slug
+        title
+        subtitle
         cover {
           url
         }
-        title
-        meta {
-          createdAt(formatString: "MMMM DD, YYYY")
+        tag {
+          category
+        }
+      }
+    }
+
+    allDatoCmsFeatured(
+      sort: {
+        order: DESC,
+        fields: meta___createdAt
+      },
+      limit: 3
+    ) {
+      nodes {
+        posts {
+          id
+          slug
+          cover {
+            url
+          }
+          title
+          meta {
+            createdAt(formatString: "MMMM DD, YYYY")
+          }
         }
       }
     }
   }
-}
 `
 export default IndexPage
 export const Head: HeadFC = () => <title>Home Page</title>

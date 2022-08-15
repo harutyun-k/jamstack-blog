@@ -27,8 +27,23 @@ const CategoryPosts = ({data}) => {
 
 export default CategoryPosts
 export const query = graphql`
-  query QueryCategory($category: String) {
-    allDatoCmsArticle(filter: {tag: {elemMatch: {category: {eq: $category}}}}) {
+  query ($category: String) {
+    allDatoCmsArticle(
+      sort: {
+        order: DESC,
+        fields: meta___createdAt
+      },
+      filter: {
+        tag: {
+          elemMatch: {
+            category: {
+              eq: $category
+            }
+          }
+        }
+      },
+      limit: 10
+    ) {
       nodes {
         meta {
           createdAt(formatString: "MMMM DD, YYYY")

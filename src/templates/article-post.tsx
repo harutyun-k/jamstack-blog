@@ -34,8 +34,12 @@ const ArticlePost = ({data}) => {
 export default ArticlePost
 
 export const query = graphql`
-  query PostQuery($slug: String) {
-    datoCmsArticle(slug: {eq: $slug}) {
+  query ($slug: String) {
+    datoCmsArticle(
+      slug: {
+        eq: $slug
+      }
+    ) {
       meta {
         createdAt(formatString: "MMMM DD, YYYY")
       }
