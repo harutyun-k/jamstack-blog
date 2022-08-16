@@ -11,14 +11,32 @@ const Pagination = ({data}) => {
     nums.push(i)
   }
 
+  const isFirst = currentPage === 1
+  const prev =
+    currentPage === 2 ? "/archive" : `/archive/page/${currentPage - 1}`
+  const isLast = currentPage === numPages
+  const nextPage = currentPage + 1
+
   return (
-    <ul className="flex">
-      {nums.map((num) => (
-        <li key={num} className={num + 1 === currentPage ? "underline" : ""}>
-          <Link to={num === 0 ? "/archive" : `/archive/page/${num + 1}`} className="font-bold mr-5" >{num + 1}</Link>
-        </li>
-      ))}
-    </ul>
+    <div className="pagination flex flex-wrap gap-4">
+      {!isFirst && (
+        <span>
+          <Link to={prev} rel="prev">
+            Previous
+          </Link>
+        </span>
+      )}
+      <div>
+        {`${currentPage} / ${nums.length}`}
+      </div>
+      {!isLast && (
+        <Link to={`/archive/page/${nextPage}`} role="next">
+          <span className="visually-hidden">
+            Next page
+          </span>
+        </Link>
+      )}
+    </div>
   )
 };
 
