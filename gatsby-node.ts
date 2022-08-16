@@ -58,7 +58,9 @@ exports.createPages = async ({ graphql, actions }) => {
       component: categoryPostTemplate,
       context: {
         slug: categorySlug.toLowerCase(),
-        category: categorySlug
+        category: categorySlug,
+        limit: 5,
+        skip: 0,
       }
     });
   })

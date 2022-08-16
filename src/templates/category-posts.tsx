@@ -27,7 +27,11 @@ const CategoryPosts = ({data}) => {
 
 export default CategoryPosts
 export const query = graphql`
-  query ($category: String) {
+  query (
+    $category: String,
+    $limit: Int,
+    $skip: Int
+  ) {
     allDatoCmsArticle(
       sort: {
         order: DESC,
@@ -42,7 +46,8 @@ export const query = graphql`
           }
         }
       },
-      limit: 10
+      limit: $limit,
+      skip: $skip
     ) {
       nodes {
         meta {
