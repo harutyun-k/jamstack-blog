@@ -22,12 +22,12 @@ const Pagination = ({data}) => {
       {!isFirst && (
         <span>
           <Link to={prev} rel="prev">
-            Previous
+            Previous page
           </Link>
         </span>
       )}
       <div>
-        {`${currentPage}/${nums.length}`}
+        {`${currentPage} of ${nums.length}`}
       </div>
       {!isLast && (
         <Link to={`/archive/page/${nextPage}`} role="next">
