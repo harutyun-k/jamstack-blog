@@ -7,12 +7,15 @@ const CategoryPosts = ({data}) => {
   const categoryTitle = result[0].tag[0].category
 
   return (
-    <div className="container ml-20" style={{padding: "20px"}}>
-      <Link to="/">
+    <div className="container flex flex-col gap-5 m-auto p-3 md:p-5 lg:p-8">
+      <Link
+        className="underline uppercase"
+        to="/"
+      >
         Home
       </Link>
-      <h1 className="font-black text-3xl uppercase" style={{margin: "20px 0", fontSize: "30px"}}>
-        {categoryTitle}
+      <h1 className="mb-5 font-black text-3xl uppercase">
+        { categoryTitle }
       </h1>
       {result.map(v => {
         return <Article
