@@ -2,7 +2,41 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 
-const ArticlePost = ({data}) => {
+interface IArticlePost {
+  data: {
+    datoCmsArticle: {
+      meta: {
+        createdAt: String;
+      },
+      title: String;
+      subtitle: String;
+      content: String;
+      tag: Array<{
+        category: String;
+      }>;
+    }
+
+    allDatoCmsArticle: {
+      nodes: Array<{
+        meta: {
+          createdAt: String;
+        };
+        id: String;
+        slug: String;
+        title: String;
+        subtitle: String;
+        cover: {
+          url: String;
+        };
+        tag: Array<{
+          category: String;
+        }>
+      }>
+    }
+  }
+}
+
+export default function ArticlePost ({data}: IArticlePost) {
   const latestNews = data.allDatoCmsArticle.nodes
 
   const result = data.datoCmsArticle
@@ -13,14 +47,7 @@ const ArticlePost = ({data}) => {
   const content = result.content
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        padding: "20px"
-      }}
-    >
+    <div className="container m-auto flex flex-col p-3 md:p-5 lg:p-8">
       <Link to="/">
         Home
       </Link>
@@ -46,12 +73,14 @@ const ArticlePost = ({data}) => {
 
       <section>
         <h2 className="mb-5 font-black text-2xl uppercase">Latest news</h2>
-        {latestNews.map(news => {
-          return <Article
-            key={news.id}
-            data={news} 
-          />
-        })}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {latestNews.map(news => {
+            return <Article
+              key={news.id}
+              data={news} 
+            />
+          })}
+        </div>
         <Link
           className="font-black text-2xl underline uppercase"
           to="/archive"
@@ -62,8 +91,6 @@ const ArticlePost = ({data}) => {
     </div>
   )
 };
-
-export default ArticlePost
 
 export const query = graphql`
   query ($slug: String) {
