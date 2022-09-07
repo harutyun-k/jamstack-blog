@@ -22,7 +22,7 @@ interface ArticleProps {
 
 export default function Article({data}: ArticleProps) {
   return (
-    <article className="relative mb-5 max-w-lg bg-slate-100 rounded-2xl overflow-hidden">
+    <article className="relative bg-slate-100 rounded-2xl overflow-hidden">
       <Link to={`/${data.slug}`}>
         <img
           className="w-full h-60 object-cover"
