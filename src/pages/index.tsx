@@ -10,31 +10,41 @@ const IndexPage = ({data}) => {
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
 
   return (
-    <div className="container">
+    <div className="container m-auto">
       <div className="m-5 mb-10">
         {categories.map(category => {
           return <Link className="mr-5 uppercase" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
         })}
       </div>
 
-      <section className="m-5 mb-20">
-        <h2 className="mb-5 font-black text-2xl uppercase">Latest news</h2>
+      <section className="m-5 mb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <h2
+          className="w-full font-black text-3xl uppercase"
+          style={{ gridColumn: "1 / -1" }}
+        >
+          Latest news
+        </h2>
         {latestNews.map(news => {
           return <Article
+            className="grow"
             key={news.id}
             data={news} 
           />
         })}
         <Link
-          className="font-black text-2xl underline uppercase"
+          className="w-full font-black underline"
+          style={{ gridColumn: "1 / -1" }}
           to="/archive"
         >
           Archive
         </Link>
       </section>
 
-      <section className="m-5">
-        <h2 className="mb-5 text-2xl font-black">
+      <section className="m-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <h2
+          className="w-full font-black text-3xl uppercase"
+          style={{ gridColumn: "1 / -1" }}
+        >
           Featured Stories
         </h2>
         {featuredStories.map(story => {
