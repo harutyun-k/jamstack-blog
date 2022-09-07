@@ -2,7 +2,32 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 
-const CategoryPosts = ({data}) => {
+interface ICategoryPosts {
+  allDatoCmsArticle: {
+    nodes: Array<{
+      meta: {
+        createdAt: String;
+      }
+      id: String;
+      slug: String;
+      title: String;
+      subtitle: String;
+      cover: {
+        url: String;
+      }
+      tag: Array<{
+        category: String;
+      }>
+    }>
+  }
+}
+
+interface CategoryPostsProps {
+  data: ICategoryPosts
+}
+
+export default function CategoryPosts({data}: CategoryPostsProps) {
+  console.log(data)
   const result = data.allDatoCmsArticle.nodes
   const categoryTitle = result[0].tag[0].category
 
@@ -28,7 +53,6 @@ const CategoryPosts = ({data}) => {
   )
 };
 
-export default CategoryPosts
 export const query = graphql`
   query (
     $category: String,
