@@ -3,7 +3,39 @@ import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 import Pagination from "../components/Pagination"
 
-const PostArchive = ({pageContext, data}) => {
+interface IPageContext {
+  currentPage: Number;
+  limit: Number;
+  numPages: Number;
+  skip: Number;
+}
+
+interface IPostArchive {
+  allDatoCmsArticle: {
+    nodes: Array<{
+      cover: {
+        url: String;
+      }
+      id: String;
+      meta: {
+        createdAt: String;
+      }
+      slug: String;
+      subtitle: String;
+      tag: Array<{
+        category: String;
+      }>
+      title: String;
+    }>
+  }
+}
+
+interface PostArchiveProps {
+  pageContext: IPageContext;
+  data: IPostArchive;
+}
+
+const PostArchive = ({pageContext, data}: PostArchiveProps) => {
   const allArticles = data.allDatoCmsArticle.nodes
 
   return (
