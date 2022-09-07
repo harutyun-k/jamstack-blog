@@ -34,7 +34,7 @@ export default function FeatureArticle ({data}: FeatureArticleProps) {
           text={data.title}
           key={data.id}
         />
-        <time>
+        <time className="italic text-sm">
           { data.meta.createdAt }
         </time>
       </div>
