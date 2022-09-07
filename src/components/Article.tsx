@@ -31,9 +31,12 @@ export default function Article({data}: ArticleProps) {
         />
       </Link>
       <div className="p-8 flex flex-col gap-2">
-        <span className="block font-bold">
+        <Link
+          className="block font-bold hover:underline uppercase"
+          to={`/category/${data.tag[0].category.toLowerCase()}`}
+        >
           { data.tag[0].category }
-        </span>
+        </Link>
         <Title
           tagName="h3"
           text={data.title}
