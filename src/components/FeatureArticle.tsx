@@ -2,32 +2,42 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Title from "../components/Title"
 
-const FeatureArticle = ({data}) => {
-  const post = data;
-  const postID = post.id
-  const postSlug = `/${post.slug}`
-  const postCover = post.cover.url
-  const postTitle = post.title
-  const postTime = post.meta.createdAt
+interface IFeatureArticle {
+  cover: {
+    url: String;
+  }
+  id: String;
+  meta: {
+    createdAt: String;
+  }
+  slug: String;
+  title: String;
+}
 
+interface FeatureArticleProps {
+  data: IFeatureArticle;
+}
+
+export default function FeatureArticle ({data}: FeatureArticleProps) {
   return (
-    <article className="mb-5">
-      <Link to={postSlug}>
+    <article className="relative bg-slate-100 rounded-2xl overflow-hidden">
+      <Link to={`/${data.slug}`}>
         <img
-          src={postCover}
+          className="w-full h-60 object-cover"
+          src={data.cover.url}
           width="300"
         />
       </Link>
-      <Title
-        tagName="h3"
-        text={postTitle}
-        key={postID}
-      />
-      <time>
-        { postTime }
-      </time>
+      <div className="p-8 flex flex-col gap-2">
+        <Title
+          tagName="h3"
+          text={data.title}
+          key={data.id}
+        />
+        <time>
+          { data.meta.createdAt }
+        </time>
+      </div>
     </article>
   )
-};
-
-export default FeatureArticle;
+}
