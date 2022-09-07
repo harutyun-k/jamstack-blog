@@ -10,14 +10,18 @@ const IndexPage = ({data}) => {
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
 
   return (
-    <div className="container m-auto">
-      <div className="m-5 mb-10">
+    <div className="container m-auto flex flex-col gap-7 md:gap-12 p-3 md:p-5 lg:p-8">
+      <h1 className="mb-3 w-full font-black text-5xl uppercase">
+        Gatsby blog
+      </h1>
+      <div className="flex flex-wrap gap-5">
+        <h2 className="w-full font-black text-3xl uppercase">Topics</h2>
         {categories.map(category => {
-          return <Link className="mr-5 uppercase" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
+          return <Link className="uppercase rounded-sm bg-slate-200 hover:bg-slate-300 p-2" to={`/category/${category.category.toLowerCase()}`}>{category.category}</Link>
         })}
       </div>
 
-      <section className="m-5 mb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         <h2
           className="w-full font-black text-3xl uppercase"
           style={{ gridColumn: "1 / -1" }}
@@ -40,7 +44,7 @@ const IndexPage = ({data}) => {
         </Link>
       </section>
 
-      <section className="m-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         <h2
           className="w-full font-black text-3xl uppercase"
           style={{ gridColumn: "1 / -1" }}
