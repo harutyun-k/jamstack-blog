@@ -3,24 +3,24 @@ import { Link } from "gatsby"
 import Title from "../components/Title"
 
 interface IArticle {
-  cover: {
-    url: String;
+  data: {
+    cover: {
+      url: String;
+    };
+    id: String;
+    meta: {
+      createdAt: String;
+    }
+    slug: String;
+    subtitle: String;
+    tag: Array<{
+      category: String;
+    }>;
+    title: String;
   }
-  id: String;
-  meta: {
-    createdAt: String;
-  }
-  slug: String;
-  subtitle: String;
-  tag: any[];
-  title: String;
 }
 
-interface ArticleProps {
-  data: IArticle;
-}
-
-export default function Article({data}: ArticleProps) {
+export default function Article({data}: IArticle): JSX.Element {
   return (
     <article className="relative bg-slate-100 rounded-2xl overflow-hidden">
       <Link to={`/${data.slug}`}>
