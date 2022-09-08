@@ -4,7 +4,12 @@ const Tag = ({ tagName, children, ...props }) => (
   React.createElement(tagName, props , children)
 )
 
-const Title = ({tagName, text}) => {
+interface TitleProps {
+  tagName: String;
+  text: String;
+}
+
+const Title = ({tagName, text}: TitleProps) => {
   return (
     <Tag tagName={tagName}>
       {text}
