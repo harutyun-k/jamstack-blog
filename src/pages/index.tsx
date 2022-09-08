@@ -4,7 +4,52 @@ import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 import FeatureArticle from "../components/FeatureArticle"
 
-const IndexPage = ({data}) => {
+interface IIndexPage {
+  data: {
+    allDatoCmsArticleCategory: {
+      nodes: Array<{
+        id: String;
+        category: String;
+      }>;
+    };
+
+    allDatoCmsArticle: {
+      nodes: Array<{
+        meta: {
+          createdAt: String;
+        };
+        id: String;
+        slug: String;
+        title: String;
+        subtitle: String;
+        cover: {
+          url: String;
+        };
+        tag: Array<{
+          category: String;
+        }>;
+      }>;
+    };
+
+    allDatoCmsFeatured: {
+      nodes: Array<{
+        posts: Array<{
+          id: String;
+          slug: String;
+          cover: {
+            url: String;
+          };
+          title: String;
+          meta: {
+            createdAt: String;
+          };
+        }>;
+      }>;
+    };
+  }
+}
+
+const IndexPage = ({data}: IIndexPage) => {
   const categories = data.allDatoCmsArticleCategory.nodes
   const latestNews = data.allDatoCmsArticle.nodes
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts
