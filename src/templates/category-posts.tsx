@@ -29,14 +29,18 @@ export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
   const categoryTitle = result[0].tag[0].category
 
   return (
-    <div className="container flex flex-col gap-5 m-auto p-3 md:p-5 lg:p-8">
+    <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5 m-auto p-3 md:p-5 lg:p-8">
       <Link
         className="underline uppercase"
+        style={{ gridColumn: "1 / -1" }}
         to="/"
       >
         Home
       </Link>
-      <h1 className="mb-5 font-black text-3xl uppercase">
+      <h1
+        className="mb-5 font-black text-3xl uppercase"
+        style={{ gridColumn: "1 / -1" }}
+      >
         { categoryTitle }
       </h1>
       {result.map(v => {
