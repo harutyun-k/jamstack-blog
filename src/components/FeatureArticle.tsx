@@ -3,22 +3,20 @@ import { Link } from "gatsby"
 import Title from "../components/Title"
 
 interface IFeatureArticle {
-  cover: {
-    url: String;
+  data: {
+    cover: {
+      url: String;
+    }
+    id: String;
+    meta: {
+      createdAt: String;
+    }
+    slug: String;
+    title: String;
   }
-  id: String;
-  meta: {
-    createdAt: String;
-  }
-  slug: String;
-  title: String;
 }
 
-interface FeatureArticleProps {
-  data: IFeatureArticle;
-}
-
-export default function FeatureArticle ({data}: FeatureArticleProps) {
+export default function FeatureArticle({data}: IFeatureArticle): JSX.Element {
   return (
     <article className="relative bg-slate-100 rounded-2xl overflow-hidden">
       <Link to={`/${data.slug}`}>
