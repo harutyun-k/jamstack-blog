@@ -10,7 +10,7 @@ interface IPagination {
   }
 }
 
-export default function Pagination({data}: IPagination): JSX.Element {
+export default function Pagination({data}: IPagination): null | JSX.Element {
   const { numPages, currentPage } = data;
   if (!numPages || !currentPage) {
     return null;
