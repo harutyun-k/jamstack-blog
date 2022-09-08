@@ -67,7 +67,7 @@ export default function ArticlePost ({data}: IArticlePost) {
         {subtitle}
       </h2>
       <div
-        className="mb-10"
+        className="mb-10 flex flex-col gap-4"
         dangerouslySetInnerHTML={{__html: content}}
       />
 
