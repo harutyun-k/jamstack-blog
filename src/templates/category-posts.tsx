@@ -3,31 +3,28 @@ import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 
 interface ICategoryPosts {
-  allDatoCmsArticle: {
-    nodes: Array<{
-      meta: {
-        createdAt: String;
-      }
-      id: String;
-      slug: String;
-      title: String;
-      subtitle: String;
-      cover: {
-        url: String;
-      }
-      tag: Array<{
-        category: String;
+  data: {
+    allDatoCmsArticle: {
+      nodes: Array<{
+        meta: {
+          createdAt: String;
+        }
+        id: String;
+        slug: String;
+        title: String;
+        subtitle: String;
+        cover: {
+          url: String;
+        }
+        tag: Array<{
+          category: String;
+        }>
       }>
-    }>
+    }
   }
 }
 
-interface CategoryPostsProps {
-  data: ICategoryPosts
-}
-
-export default function CategoryPosts({data}: CategoryPostsProps) {
-  console.log(data)
+export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
   const result = data.allDatoCmsArticle.nodes
   const categoryTitle = result[0].tag[0].category
 
