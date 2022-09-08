@@ -4,17 +4,15 @@ const Tag = ({ tagName, children, ...props }) => (
   React.createElement(tagName, props , children)
 )
 
-interface TitleProps {
+interface ITitle {
   tagName: String;
   text: String;
 }
 
-const Title = ({tagName, text}: TitleProps) => {
+export default function Title({tagName, text}: ITitle): JSX.Element {
   return (
     <Tag tagName={tagName}>
       {text}
     </Tag>
   )
-};
-
-export default Title;
+}
