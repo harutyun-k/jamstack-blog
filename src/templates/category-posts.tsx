@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
+import Layout from "../components/Layout";
 
 interface ICategoryPosts {
   data: {
@@ -29,27 +30,29 @@ export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
   const categoryTitle = result[0].tag[0].category
 
   return (
-    <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5 m-auto p-3 md:p-5 lg:p-8">
-      <Link
-        className="underline uppercase"
-        style={{ gridColumn: "1 / -1" }}
-        to="/"
-      >
-        Home
-      </Link>
-      <h1
-        className="mb-5 font-black text-3xl uppercase"
-        style={{ gridColumn: "1 / -1" }}
-      >
-        { categoryTitle }
-      </h1>
-      {result.map(v => {
-        return <Article
-          key={v.id}
-          data={v} 
-        />
-      })}
-    </div>
+    <Layout>
+      <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5 m-auto p-3 md:p-5 lg:p-8">
+        <Link
+          className="underline uppercase"
+          style={{ gridColumn: "1 / -1" }}
+          to="/"
+        >
+          Home
+        </Link>
+        <h1
+          className="mb-5 font-black text-3xl uppercase"
+          style={{ gridColumn: "1 / -1" }}
+        >
+          { categoryTitle }
+        </h1>
+        {result.map(v => {
+          return <Article
+            key={v.id}
+            data={v} 
+          />
+        })}
+      </div>
+    </Layout>
   )
 };
 

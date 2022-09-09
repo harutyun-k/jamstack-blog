@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Article from "../components/Article"
 import Pagination from "../components/Pagination"
+import Layout from "../components/Layout";
 
 interface IPostArchive {
   pageContext: {
@@ -36,26 +37,28 @@ export default function PostArchive({pageContext, data}: IPostArchive): JSX.Elem
   const allArticles = data.allDatoCmsArticle.nodes
 
   return (
-    <section className="container m-auto flex flex-col gap-4 p-3 md:p-5 lg:p-8">
-      <Link
-        className="mb-3 p-2 underline uppercase"
-        to="/"
-      >
-        Home
-      </Link>
-      <h1 className="mb-15 font-black text-3xl uppercase">
-        Archive
-      </h1>
-      <div className="mb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {allArticles.map(article => {
-          return <Article
-            key={article.id}
-            data={article} 
-          />
-        })}
-      </div>
-      <Pagination data={pageContext} />
-    </section>
+    <Layout>
+      <section className="container m-auto flex flex-col gap-4 p-3 md:p-5 lg:p-8">
+        <Link
+          className="mb-3 p-2 underline uppercase"
+          to="/"
+        >
+          Home
+        </Link>
+        <h1 className="mb-15 font-black text-3xl uppercase">
+          Archive
+        </h1>
+        <div className="mb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {allArticles.map(article => {
+            return <Article
+              key={article.id}
+              data={article} 
+            />
+          })}
+        </div>
+        <Pagination data={pageContext} />
+      </section>
+    </Layout>
   )
 }
 

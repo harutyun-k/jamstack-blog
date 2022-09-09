@@ -1,14 +1,15 @@
 import * as React from "react"
 import { HeadFC } from "gatsby"
+import Layout from "../components/Layout";
 
 
 const NotFoundPage = () => {
   return (
-    <main>
-      <h1>
+    <Layout>
+      <div>
         404
-      </h1>
-    </main>
+      </div>
+    </Layout>
   )
 }
 
