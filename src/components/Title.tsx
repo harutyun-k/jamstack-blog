@@ -1,12 +1,17 @@
 import * as React from "react";
 
-const Tag = ({ tagName, children, ...props }) => (
-  React.createElement(tagName, props , children)
-)
+interface ITag {
+  tagName: string;
+  children: string;
+}
+
+function Tag({ tagName, children, ...props }: ITag): JSX.Element {
+  return React.createElement(tagName, props , children)
+}
 
 interface ITitle {
-  tagName: String;
-  text: String;
+  tagName: string;
+  text: string;
 }
 
 export default function Title({tagName, text}: ITitle): JSX.Element {
