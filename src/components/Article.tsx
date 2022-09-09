@@ -5,18 +5,18 @@ import Title from "../components/Title"
 interface IArticle {
   data: {
     cover: {
-      url: String;
+      url: string;
     };
-    id: String;
+    id: string;
     meta: {
-      createdAt: String;
+      createdAt: string;
     }
-    slug: String;
-    subtitle: String;
-    tag: Array<{
-      category: String;
-    }>;
-    title: String;
+    slug: string;
+    subtitle: string;
+    tag: [{
+      category: string;
+    }];
+    title: string;
   }
 }
 
