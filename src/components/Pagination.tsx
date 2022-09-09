@@ -3,10 +3,10 @@ import * as React from "react"
 
 interface IPagination {
   data: {
-    limit: Number;
-    skip: Number;
-    numPages: Number;
-    currentPage: Number;
+    limit: number;
+    skip: number;
+    numPages: number;
+    currentPage: number;
   }
 }
 
