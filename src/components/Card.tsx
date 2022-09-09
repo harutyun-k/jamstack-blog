@@ -12,8 +12,7 @@ interface IArticle {
       createdAt: string;
     }
     slug: string;
-    subtitle: string;
-    tag: [{
+    tag?: [{
       category: string;
     }];
     title: string;
@@ -21,29 +20,36 @@ interface IArticle {
 }
 
 export default function Article({data}: IArticle): JSX.Element {
+  const cardID = data.id;
+  const cardLink = `/${data.slug}`;
+  const cardImage = data.cover.url;
+  const cardTitle = data.title;
+  const cardCategory = data.tag;
+  const cardTime = data.meta.createdAt;
+
   return (
     <article className="relative bg-slate-100 rounded-2xl overflow-hidden">
-      <Link to={`/${data.slug}`}>
+      <Link to={cardLink}>
         <img
           className="w-full h-60 object-cover"
-          src={data.cover.url}
-          alt={data.title}
+          src={cardImage}
+          alt={cardTitle}
         />
       </Link>
       <div className="p-8 flex flex-col gap-2">
-        <Link
+        {cardCategory && <Link
           className="block font-bold hover:underline uppercase"
-          to={`/category/${data.tag[0].category.toLowerCase()}`}
+          to={`/category/${cardCategory[0].category.toLowerCase()}`}
         >
-          { data.tag[0].category }
-        </Link>
+          {cardCategory[0].category}
+        </Link>}
         <Title
           tagName="h3"
-          text={data.title}
-          key={data.id}
+          text={cardTitle}
+          key={cardID}
         />
         <time className="italic text-sm">
-          { data.meta.createdAt }
+          {cardTime}
         </time>
       </div>
     </article>

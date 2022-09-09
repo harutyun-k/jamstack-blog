@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import Article from "../components/Article"
+import Card from "../components/Card"
 import Layout from "../components/Layout";
 
 interface IArticlePost {
@@ -79,7 +79,7 @@ export default function ArticlePost({data}: IArticlePost): JSX.Element {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {latestNews.map(news => {
-              return <Article
+              return <Card
                 key={news.id}
                 data={news} 
               />

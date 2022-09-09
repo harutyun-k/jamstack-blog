@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import Article from "../components/Article"
+import Card from "../components/Card"
 import Pagination from "../components/Pagination"
 import Layout from "../components/Layout";
 
@@ -50,7 +50,7 @@ export default function PostArchive({pageContext, data}: IPostArchive): JSX.Elem
         </h1>
         <div className="mb-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {allArticles.map(article => {
-            return <Article
+            return <Card
               key={article.id}
               data={article} 
             />

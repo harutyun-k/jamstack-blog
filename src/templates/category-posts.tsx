@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import Article from "../components/Article"
+import Card from "../components/Card"
 import Layout from "../components/Layout";
 
 interface ICategoryPosts {
@@ -46,7 +46,7 @@ export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
           { categoryTitle }
         </h1>
         {result.map(v => {
-          return <Article
+          return <Card
             key={v.id}
             data={v} 
           />

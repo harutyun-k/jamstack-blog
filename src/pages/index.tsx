@@ -2,8 +2,7 @@ import * as React from "react"
 import type { HeadFC } from "gatsby"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout";
-import Article from "../components/Article"
-import FeatureArticle from "../components/FeatureArticle"
+import Card from "../components/Card"
 
 interface IIndexPage {
   data: {
@@ -22,7 +21,6 @@ interface IIndexPage {
         id: string;
         slug: string;
         title: string;
-        subtitle: string;
         cover: {
           url: string;
         };
@@ -76,7 +74,7 @@ const IndexPage = ({data}: IIndexPage) => {
             Latest news
           </h2>
           {latestNews.map(news => {
-            return <Article
+            return <Card
               key={news.id}
               data={news} 
             />
@@ -98,7 +96,7 @@ const IndexPage = ({data}: IIndexPage) => {
             Featured Stories
           </h2>
           {featuredStories.map(story => {
-            return <FeatureArticle
+            return <Card
               key={story.id}
               data={story}
             />
@@ -137,7 +135,6 @@ export const query = graphql`
         id
         slug
         title
-        subtitle
         cover {
           url
         }
