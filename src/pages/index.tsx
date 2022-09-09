@@ -7,44 +7,44 @@ import FeatureArticle from "../components/FeatureArticle"
 interface IIndexPage {
   data: {
     allDatoCmsArticleCategory: {
-      nodes: Array<{
-        id: String;
-        category: String;
-      }>;
+      nodes: [{
+        id: string;
+        category: string;
+      }];
     };
 
     allDatoCmsArticle: {
-      nodes: Array<{
+      nodes: [{
         meta: {
-          createdAt: String;
+          createdAt: string;
         };
-        id: String;
-        slug: String;
-        title: String;
-        subtitle: String;
+        id: string;
+        slug: string;
+        title: string;
+        subtitle: string;
         cover: {
-          url: String;
+          url: string;
         };
-        tag: Array<{
-          category: String;
-        }>;
-      }>;
+        tag: [{
+          category: string;
+        }];
+      }];
     };
 
     allDatoCmsFeatured: {
-      nodes: Array<{
-        posts: Array<{
-          id: String;
-          slug: String;
+      nodes: [{
+        posts: [{
+          id: string;
+          slug: string;
           cover: {
-            url: String;
+            url: string;
           };
-          title: String;
+          title: string;
           meta: {
-            createdAt: String;
+            createdAt: string;
           };
-        }>;
-      }>;
+        }];
+      }];
     };
   }
 }
@@ -75,7 +75,6 @@ const IndexPage = ({data}: IIndexPage) => {
         </h2>
         {latestNews.map(news => {
           return <Article
-            className="grow"
             key={news.id}
             data={news} 
           />
