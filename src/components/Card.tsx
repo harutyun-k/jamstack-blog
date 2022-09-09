@@ -2,23 +2,6 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Title from "../components/Title"
 
-interface Article {
-  data: {
-    cover: {
-      url: string;
-    };
-    id: string;
-    meta: {
-      createdAt: string;
-    }
-    slug: string;
-    tag?: [{
-      category: string;
-    }];
-    title: string;
-  }
-}
-
 export default function Article({data}: Article): JSX.Element {
   const cardID = data.id;
   const cardLink = `/${data.slug}`;
