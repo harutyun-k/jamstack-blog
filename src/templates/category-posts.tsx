@@ -5,21 +5,21 @@ import Article from "../components/Article"
 interface ICategoryPosts {
   data: {
     allDatoCmsArticle: {
-      nodes: Array<{
+      nodes: [{
         meta: {
-          createdAt: String;
+          createdAt: string;
         }
-        id: String;
-        slug: String;
-        title: String;
-        subtitle: String;
+        id: string;
+        slug: string;
+        title: string;
+        subtitle: string;
         cover: {
-          url: String;
+          url: string;
         }
-        tag: Array<{
-          category: String;
-        }>
-      }>
+        tag: [{
+          category: string;
+        }]
+      }]
     }
   }
 }
@@ -45,7 +45,6 @@ export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
       </h1>
       {result.map(v => {
         return <Article
-          className="mb-5"
           key={v.id}
           data={v} 
         />
