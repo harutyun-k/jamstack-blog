@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Title from "../components/Title"
 
-interface IArticle {
+interface Article {
   data: {
     cover: {
       url: string;
@@ -19,7 +19,7 @@ interface IArticle {
   }
 }
 
-export default function Article({data}: IArticle): JSX.Element {
+export default function Article({data}: Article): JSX.Element {
   const cardID = data.id;
   const cardLink = `/${data.slug}`;
   const cardImage = data.cover.url;

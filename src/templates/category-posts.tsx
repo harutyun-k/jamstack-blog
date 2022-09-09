@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Card from "../components/Card"
 import Layout from "../components/Layout";
 
-interface ICategoryPosts {
+interface CategoryPosts {
   data: {
     allDatoCmsArticle: {
       nodes: [{
@@ -25,7 +25,7 @@ interface ICategoryPosts {
   }
 }
 
-export default function CategoryPosts({data}: ICategoryPosts): JSX.Element {
+export default function CategoryPosts({data}: CategoryPosts): JSX.Element {
   const result = data.allDatoCmsArticle.nodes
   const categoryTitle = result[0].tag[0].category
 

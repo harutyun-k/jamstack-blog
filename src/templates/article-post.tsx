@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Card from "../components/Card"
 import Layout from "../components/Layout";
 
-interface IArticlePost {
+interface ArticlePost {
   data: {
     datoCmsArticle: {
       meta: {
@@ -37,7 +37,7 @@ interface IArticlePost {
   }
 }
 
-export default function ArticlePost({data}: IArticlePost): JSX.Element {
+export default function ArticlePost({data}: ArticlePost): JSX.Element {
   const article = data.datoCmsArticle;
   const articleTitle = article.title;
   const articleCategory = article.tag[0].category;

@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout";
 import Card from "../components/Card"
 
-interface IIndexPage {
+interface IndexPage {
   data: {
     allDatoCmsArticleCategory: {
       nodes: [{
@@ -48,7 +48,7 @@ interface IIndexPage {
   }
 }
 
-const IndexPage = ({data}: IIndexPage) => {
+const IndexPage = ({data}: IndexPage) => {
   const categories = data.allDatoCmsArticleCategory.nodes
   const latestNews = data.allDatoCmsArticle.nodes
   const featuredStories = data.allDatoCmsFeatured.nodes[0].posts

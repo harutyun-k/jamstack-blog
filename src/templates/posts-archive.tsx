@@ -4,7 +4,7 @@ import Card from "../components/Card"
 import Pagination from "../components/Pagination"
 import Layout from "../components/Layout";
 
-interface IPostArchive {
+interface PostArchive {
   pageContext: {
     currentPage: number;
     limit: number;
@@ -33,7 +33,7 @@ interface IPostArchive {
   };
 }
 
-export default function PostArchive({pageContext, data}: IPostArchive): JSX.Element {
+export default function PostArchive({pageContext, data}: PostArchive): JSX.Element {
   const allArticles = data.allDatoCmsArticle.nodes
 
   return (

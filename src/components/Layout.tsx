@@ -1,10 +1,10 @@
 import * as React from "react"
 
-interface ILayout {
+interface Layout {
   children: JSX.Element;
 }
 
-export default function Layout({children}: ILayout): JSX.Element {
+export default function Layout({children}: Layout): JSX.Element {
   return (
     <main>
       {children}

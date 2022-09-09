@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import * as React from "react"
 
-interface IPagination {
+interface Pagination {
   data: {
     limit: number;
     skip: number;
@@ -10,7 +10,7 @@ interface IPagination {
   }
 }
 
-export default function Pagination({data}: IPagination): null | JSX.Element {
+export default function Pagination({data}: Pagination): null | JSX.Element {
   const { numPages, currentPage } = data;
   if (!numPages || !currentPage) {
     return null;
