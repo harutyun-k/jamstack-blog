@@ -6,32 +6,32 @@ interface IArticlePost {
   data: {
     datoCmsArticle: {
       meta: {
-        createdAt: String;
+        createdAt: string;
       },
-      title: String;
-      subtitle: String;
-      content: String;
-      tag: Array<{
-        category: String;
-      }>;
+      title: string;
+      subtitle: string;
+      content: string;
+      tag: [{
+        category: string;
+      }];
     }
 
     allDatoCmsArticle: {
-      nodes: Array<{
+      nodes: [{
         meta: {
-          createdAt: String;
+          createdAt: string;
         };
-        id: String;
-        slug: String;
-        title: String;
-        subtitle: String;
+        id: string;
+        slug: string;
+        title: string;
+        subtitle: string;
         cover: {
-          url: String;
+          url: string;
         };
-        tag: Array<{
-          category: String;
-        }>
-      }>
+        tag: [{
+          category: string;
+        }]
+      }]
     }
   }
 }
