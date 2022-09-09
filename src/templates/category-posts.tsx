@@ -6,28 +6,14 @@ import Layout from "../components/Layout";
 interface CategoryPosts {
   data: {
     allDatoCmsArticle: {
-      nodes: [{
-        meta: {
-          createdAt: string;
-        }
-        id: string;
-        slug: string;
-        title: string;
-        subtitle: string;
-        cover: {
-          url: string;
-        }
-        tag: [{
-          category: string;
-        }]
-      }]
+      nodes: Article[];
     }
   }
 }
 
 export default function CategoryPosts({data}: CategoryPosts): JSX.Element {
   const result = data.allDatoCmsArticle.nodes
-  const categoryTitle = result[0].tag[0].category
+  const categoryTitle = result[0].tag
 
   return (
     <Layout>
@@ -39,12 +25,12 @@ export default function CategoryPosts({data}: CategoryPosts): JSX.Element {
         >
           Home
         </Link>
-        <h1
+        {categoryTitle && <h1
           className="mb-5 font-black text-3xl uppercase"
           style={{ gridColumn: "1 / -1" }}
         >
-          { categoryTitle }
-        </h1>
+          { categoryTitle[0].category }
+        </h1>}
         {result.map(v => {
           return <Card
             key={v.id}
@@ -86,7 +72,6 @@ export const query = graphql`
         id
         slug
         title
-        subtitle
         cover {
           url
         }

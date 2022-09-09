@@ -14,21 +14,7 @@ interface PostArchive {
 
   data: {
     allDatoCmsArticle: {
-      nodes: [{
-        cover: {
-          url: string;
-        }
-        id: string;
-        meta: {
-          createdAt: string;
-        }
-        slug: string;
-        subtitle: string;
-        tag: [{
-          category: string;
-        }]
-        title: string;
-      }]
+      nodes: Article[];
     }
   };
 }
@@ -79,7 +65,6 @@ export const query = graphql`
         id
         slug
         title
-        subtitle
         cover {
           url
         }

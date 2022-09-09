@@ -5,34 +5,10 @@ import Layout from "../components/Layout";
 
 interface ArticlePost {
   data: {
-    datoCmsArticle: {
-      meta: {
-        createdAt: string;
-      },
-      title: string;
-      subtitle: string;
-      content: string;
-      tag: [{
-        category: string;
-      }];
-    }
+    datoCmsArticle: Article;
 
     allDatoCmsArticle: {
-      nodes: [{
-        meta: {
-          createdAt: string;
-        };
-        id: string;
-        slug: string;
-        title: string;
-        subtitle: string;
-        cover: {
-          url: string;
-        };
-        tag: [{
-          category: string;
-        }]
-      }]
+      nodes: Article[];
     }
   }
 }
@@ -40,8 +16,7 @@ interface ArticlePost {
 export default function ArticlePost({data}: ArticlePost): JSX.Element {
   const article = data.datoCmsArticle;
   const articleTitle = article.title;
-  const articleCategory = article.tag[0].category;
-  const articleCategoryLink = `/category/${articleCategory.toLowerCase()}`;
+  const articleCategory = article.tag;
   const articleTime = article.meta.createdAt;
   const articleSubtitle = article.subtitle;
   const articleContent = article.content;
@@ -54,12 +29,12 @@ export default function ArticlePost({data}: ArticlePost): JSX.Element {
         <Link to="/">
           Home
         </Link>
-        <Link
+        {articleCategory && <Link
           className="font-black uppercase"
-          to={ articleCategoryLink }
+          to={ `/category/${articleCategory[0].category .toLowerCase()}` }
         >
-          { articleCategory }
-        </Link>
+          { articleCategory[0].category }
+        </Link>}
         <time className="italic">
           { articleTime }
         </time>
@@ -129,7 +104,6 @@ export const query = graphql`
         id
         slug
         title
-        subtitle
         cover {
           url
         }

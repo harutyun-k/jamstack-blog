@@ -2,7 +2,11 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Title from "../components/Title"
 
-export default function Article({data}: Article): JSX.Element {
+interface ArticleProps {
+  data: Article;
+}
+
+export default function Article({data}: ArticleProps): JSX.Element {
   const cardID = data.id;
   const cardLink = `/${data.slug}`;
   const cardImage = data.cover.url;

@@ -2,19 +2,19 @@ export {};
 
 declare global {
   interface Article {
-    data: {
-      cover: {
-        url: string;
-      };
-      id: string;
-      meta: {
-        createdAt: string;
-      }
-      slug: string;
-      tag?: [{
-        category: string;
-      }];
-      title: string;
-    }
+    id: string;
+    slug: string;
+    cover: {
+      url: string;
+    };
+    title: string;
+    subtitle?: string;
+    content?: string;
+    tag?: [{
+      category: string;
+    }];
+    meta: {
+      createdAt: string;
+    };
   }
 }

@@ -14,35 +14,12 @@ interface IndexPage {
     };
 
     allDatoCmsArticle: {
-      nodes: [{
-        meta: {
-          createdAt: string;
-        };
-        id: string;
-        slug: string;
-        title: string;
-        cover: {
-          url: string;
-        };
-        tag: [{
-          category: string;
-        }];
-      }];
+      nodes: Article[];
     };
 
     allDatoCmsFeatured: {
       nodes: [{
-        posts: [{
-          id: string;
-          slug: string;
-          cover: {
-            url: string;
-          };
-          title: string;
-          meta: {
-            createdAt: string;
-          };
-        }];
+        posts: Article[];
       }];
     };
   }
