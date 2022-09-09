@@ -5,14 +5,14 @@ import Title from "../components/Title"
 interface IFeatureArticle {
   data: {
     cover: {
-      url: String;
+      url: string;
     }
-    id: String;
+    id: string;
     meta: {
-      createdAt: String;
+      createdAt: string;
     }
-    slug: String;
-    title: String;
+    slug: string;
+    title: string;
   }
 }
 
