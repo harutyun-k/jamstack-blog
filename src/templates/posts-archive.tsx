@@ -5,29 +5,29 @@ import Pagination from "../components/Pagination"
 
 interface IPostArchive {
   pageContext: {
-    currentPage: Number;
-    limit: Number;
-    numPages: Number;
-    skip: Number;
+    currentPage: number;
+    limit: number;
+    numPages: number;
+    skip: number;
   };
 
   data: {
     allDatoCmsArticle: {
-      nodes: Array<{
+      nodes: [{
         cover: {
-          url: String;
+          url: string;
         }
-        id: String;
+        id: string;
         meta: {
-          createdAt: String;
+          createdAt: string;
         }
-        slug: String;
-        subtitle: String;
-        tag: Array<{
-          category: String;
-        }>
-        title: String;
-      }>
+        slug: string;
+        subtitle: string;
+        tag: [{
+          category: string;
+        }]
+        title: string;
+      }]
     }
   };
 }
