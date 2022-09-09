@@ -36,15 +36,16 @@ interface IArticlePost {
   }
 }
 
-export default function ArticlePost ({data}: IArticlePost) {
-  const latestNews = data.allDatoCmsArticle.nodes
+export default function ArticlePost({data}: IArticlePost): JSX.Element {
+  const article = data.datoCmsArticle;
+  const articleTitle = article.title;
+  const articleCategory = article.tag[0].category;
+  const articleCategoryLink = `/category/${articleCategory.toLowerCase()}`;
+  const articleTime = article.meta.createdAt;
+  const articleSubtitle = article.subtitle;
+  const articleContent = article.content;
 
-  const result = data.datoCmsArticle
-  const title = result.title
-  const tag = result.tag[0].category
-  const time = result.meta.createdAt
-  const subtitle = result.subtitle
-  const content = result.content
+  const latestNews = data.allDatoCmsArticle.nodes;
 
   return (
     <div className="container m-auto flex flex-col gap-4 p-3 md:p-5 lg:p-8">
@@ -53,24 +54,23 @@ export default function ArticlePost ({data}: IArticlePost) {
       </Link>
       <Link
         className="font-black uppercase"
-        to={`/category/${tag.toLowerCase()}`}
+        to={ articleCategoryLink }
       >
-        { tag }
+        { articleCategory }
       </Link>
       <time className="italic">
-        {time}
+        { articleTime }
       </time>
       <h1 className="mb-3 font-black text-5xl uppercase">
-        {title}
+        { articleTitle }
       </h1>
       <h2 className="font-black text-4xl uppercase">
-        {subtitle}
+        { articleSubtitle }
       </h2>
       <div
         className="mb-10 flex flex-col gap-4"
-        dangerouslySetInnerHTML={{__html: content}}
+        dangerouslySetInnerHTML={{__html: articleContent}}
       />
-
       <section className="flex flex-col gap-5">
         <h2 className="w-full font-black text-3xl uppercase mb-5">
           Latest news
